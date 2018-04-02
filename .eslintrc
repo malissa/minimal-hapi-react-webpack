@@ -10,7 +10,6 @@
   "rules": {
     // Airbnb-made config is nice, but for some things, we know better.
     // The following are our overrides for demo purposes
-    "max-len": ["error", 120],
     "comma-dangle": ["error", "never"]
   }
 }

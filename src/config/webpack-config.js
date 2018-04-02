@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 const path = require('path');
 const webpack = require('webpack');
 const AssetsWebpackPlugin = require('assets-webpack-plugin');
@@ -7,6 +9,7 @@ const config = require('./variables');
 
 const APP_ENTRY = path.join(config.paths.source, 'main-app');
 const WEBPACK_HOT_ENTRY = `webpack-hot-middleware/client?path=${config.webpack.devServerUrl}/__webpack_hmr`;
+
 const JS_JSX = /\.(js|jsx)$/; // We allow both .js or .jsx extensions for JS code – choose what you like more.
 const BABEL = 'babel-loader'; // We use Babel to transpile ES6/JSX into ES5. See .babelrc file for additional rules.
 const CSS_LOADER = {
@@ -17,6 +20,9 @@ const CSS_LOADER = {
 
 
 const webpackConfig = {
+  node: {
+    fs: 'empty'
+  },
   resolve: {
     // Webpack tries to append these extensions when you require(moduleName)
     // The empty extension allows specifying the extension in a require call, e.g. require('./main-app.css')
@@ -46,8 +52,7 @@ const webpackConfig = {
 if (process.env.NODE_ENV === 'development') {
   Object.assign(webpackConfig, {
     entry: {
-      app: [APP_ENTRY, WEBPACK_HOT_ENTRY],
-      sandbox: [path.join(config.paths.source, 'main-sandbox'), WEBPACK_HOT_ENTRY]
+      app: [APP_ENTRY, WEBPACK_HOT_ENTRY]
     },
     devtool: 'cheap-module-eval-source-map', // Generate source maps (more or less efficiently)
     module: {

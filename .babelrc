@@ -1,4 +1,4 @@
 {
     // This Babel config file affects both frontend and server transpilation
-    "presets": ["es2015", "react", "stage-1"]
+    "presets": ["env", "react", "stage-1"]
 }

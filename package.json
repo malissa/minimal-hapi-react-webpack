@@ -1,35 +1,29 @@
 {
-  "name": "minimal-hapi-react-webpack-hmr-sandbox",
-  "version": "4.0.0",
-  "description": "Minimal Hapi + React + Webpack + HMR (hot module reloading) Sandbox",
+  "name": "minimal-hapi-react-webpack",
+  "private": true,
   "keywords": [
-    "hapi",
-    "react",
-    "webpack",
-    "HMR",
-    "boilerplate",
-    "sandbox"
+    "hapijs",
+    "es6",
+    "reactjs",
+    "webpack"
   ],
-  "license": "MIT",
-  "author": "Nikita Gazarov <nikita@raquo.com>",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/raquo/minimal-hapi-react-webpack"
-  },
+  "author": "Shrine Development <hello@shrinedev.com>",
   "main": "src/server.js",
   "engines": {
-    "node": "^4.2.2"
+    "node": "^8.6.0",
+    "npm": "^5.3.0"
   },
   "scripts": {
-    "start": "NODE_ENV=production     node --harmony src/server.js",
-    "build": "NODE_ENV=production     node --harmony src/scripts/make.js  &&  NODE_ENV=production   webpack -p --config src/config/webpack-config.js",
+    "start": "node --harmony src/server.js",
+    "build": "node --harmony src/scripts/make.js  &&  webpack -p --config src/config/webpack-config.js",
     "webpack": "NODE_ENV=development  node --harmony src/scripts/make.js  &&  NODE_ENV=development  node --harmony src/webpack-dev-server.js",
     "dev": "NODE_ENV=development      node --harmony src/scripts/make.js  &&  NODE_ENV=development  ./node_modules/nodemon/bin/nodemon.js --harmony src/server.js",
     "make": "NODE_ENV=development     node --harmony src/scripts/make.js",
     "lint": "eslint . --ext .js --ext .jsx",
     "lint-fix": "eslint . --ext .js --ext .jsx --fix",
     "postinstall": "npm run build",
-    "test": "./node_modules/.bin/mocha --compilers jsx:babel-register --require ignore-styles ./tests/specs --recursive"
+    "test": "NODE_ENV=test jest --no-cache",
+    "test-watch": "NODE_ENV=test jest --watch"
   },
   "dependencies": {
     "assets-webpack-plugin": "3.5.1",
@@ -37,39 +31,64 @@
     "babel-eslint": "7.2.3",
     "babel-loader": "6.4.1",
     "babel-plugin-react-transform": "2.0.2",
-    "babel-preset-es2015": "6.24.1",
     "babel-preset-react": "6.24.1",
     "babel-preset-stage-1": "6.24.1",
     "babel-register": "6.24.1",
-    "chai": "3.5.0",
+    "btoa": "^1.1.2",
     "chalk": "1.1.3",
     "css-loader": "0.28.0",
-    "hapi": "16.1.1",
-    "hapi-react-views": "9.2.1",
+    "d3": "4.10.2",
+    "dotenv": "^4.0.0",
+    "hapi": "17.3.0",
+    "hapi-react-views": "10.0.0",
+    "hapi-require-https": "3.0.0",
+    "human-format": "^0.8.0",
     "ignore-styles": "5.0.1",
-    "inert": "4.2.0",
-    "jsdom": "9.12.0",
-    "mocha": "3.2.0",
-    "prop-types": "15.5.8",
-    "react": "15.5.4",
-    "react-dom": "15.5.4",
+    "inert": "5.1.0",
+    "joi": "^11.1.1",
+    "material-ui": "^0.19.3",
+    "pg-hstore": "2.3.2",
+    "prop-types": "15.6.0",
+    "react": "16.0.0",
+    "react-dom": "16.0.0",
+    "react-intl": "^2.4.0",
     "rimraf": "2.6.1",
     "style-loader": "0.16.1",
-    "vision": "4.1.1",
-    "webpack": "1.15.0",
+    "vision": "5.3.2",
+    "webpack": "2",
     "webpack-dev-middleware": "1.10.2",
-    "webpack-hot-middleware": "2.18.0"
+    "webpack-hot-middleware": "2.18.0",
+    "whatwg-fetch": "^2.0.3",
+    "wreck": "14.0.2"
   },
   "devDependencies": {
+    "babel-jest": "19.0.0",
+    "babel-plugin-transform-es2015-modules-commonjs-simple": "6.7.4",
+    "babel-preset-env": "1.6.0",
+    "enzyme": "^3.1.0",
+    "enzyme-adapter-react-16": "^1.0.2",
     "eslint": "3.19.0",
     "eslint-config-airbnb": "14.1.0",
     "eslint-loader": "1.7.1",
-    "eslint-plugin-import": "2.2.0",
+    "eslint-plugin-import": "2.7.0",
     "eslint-plugin-jsx-a11y": "4.0.0",
     "eslint-plugin-react": "6.10.3",
-    "express": "4.15.2",
-    "h2o2": "5.4.0",
+    "express": "4.16.2",
+    "h2o2": "8.0.1",
+    "jest": "19.0.2",
     "nodemon": "1.11.0",
-    "react-transform-hmr": "1.0.4"
+    "react-addons-test-utils": "^15.6.2",
+    "react-test-renderer": "^16.0.0",
+    "react-transform-hmr": "1.0.4",
+    "regenerator-runtime": "0.11.0"
+  },
+  "jest": {
+    "setupFiles": [
+      "./test-env.js"
+    ],
+    "transform": {
+      "^.+\\.js$": "babel-jest",
+      "^.+\\.jsx$": "babel-jest"
+    }
   }
 }

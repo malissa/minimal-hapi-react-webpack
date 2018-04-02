@@ -12,14 +12,14 @@ const BUILD_DIRNAME = 'static/build';
 let SERVER_HOST;
 let SERVER_PORT;
 const SERVER_PROTOCOL = 'http'; // Note: I did not test https yet, so you might need more adjustments to make it work
-const WEBPACK_DEV_SERVER_PORT = 3001;
+const WEBPACK_DEV_SERVER_PORT = 4001;
 
 // process.env object contains environment variables passed to the node.js process.
 // For example, you can see NODE_ENV passed to node in the "scripts" section of package.json
-if (process.env.NODE_ENV === 'development') {
+if (process.env.NODE_ENV === 'development' || process.env.NODE_ENV === 'test') {
   SERVER_HOST = '0.0.0.0';
-  SERVER_PORT = process.env.PORT || 3000;
-} else if (process.env.NODE_ENV === 'production') {
+  SERVER_PORT = process.env.PORT || 4000;
+} else if (process.env.NODE_ENV !== 'development') {
   SERVER_HOST = '0.0.0.0';
   SERVER_PORT = process.env.PORT || 2000;
 } else {
@@ -40,7 +40,8 @@ const config = {
     build: path.join(ROOT_PATH, WEB_ROOT_DIRNAME, BUILD_DIRNAME), // Do not keep any non-generated files here.
     source: path.join(ROOT_PATH, SOURCE_DIRNAME),
     components: path.join(ROOT_PATH, SOURCE_DIRNAME, 'components'),
-    serverViews: path.join(ROOT_PATH, SOURCE_DIRNAME, 'server-views')
+    serverViews: path.join(ROOT_PATH, SOURCE_DIRNAME, 'server-views'),
+    test: path.join(ROOT_PATH, '__tests__')
   },
   server: {
     publicFiles: [

@@ -9,6 +9,7 @@ const eslintIgnore = [
   '###',
   '',
   path.relative(config.paths.root, config.paths.build),
+  path.relative(config.paths.root, config.paths.test),
   ''
 ];
 
