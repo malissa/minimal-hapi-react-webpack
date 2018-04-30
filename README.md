@@ -1,7 +1,5 @@
 # Minimal Hapi React Webpack Boilerplate
 
-Secondary ticket market for PassageX
-
 ### Overview
 
 * React (client) hot module reloading is configured with react-transform-hmr
