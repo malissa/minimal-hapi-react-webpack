@@ -2,6 +2,7 @@
 *.iml
 .idea/*
 .c9/*
+.env
 
 # Generated files:
 nodemon.json
