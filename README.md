@@ -32,10 +32,6 @@
 * Visit [http://localhost:4000](http://localhost:4000) and open your browser's web development console
 * ESLint errors are printed into webpack dev server output and also into the browser's console. To run ESLint separately from that, do `npm run lint`.
 
-## License
-
-No usage allowed without written consent until public release.
-
 ## Acknowledgements
 
 Kickstarted from [minimal-hapi-react-webpack](https://github.com/raquo/minimal-hapi-react-webpack/graphs/contributors)
